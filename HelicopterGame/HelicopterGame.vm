@@ -1,0 +1,710 @@
+function HelicopterGame.new 0
+push constant 10
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+push constant 0
+push constant 30
+call Helicopter.new 3
+pop this 0
+push constant 0
+pop this 8
+push constant 0
+pop this 4
+push constant 0
+pop this 9
+push constant 0
+pop this 6
+push pointer 0
+return
+function HelicopterGame.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call Helicopter.dispose 1
+pop temp 0
+push this 6
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+call Obstacle.dispose 1
+pop temp 0
+label IF_FALSE0
+push this 6
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+call Obstacle.dispose 1
+pop temp 0
+label IF_FALSE1
+push this 6
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 3
+call Obstacle.dispose 1
+pop temp 0
+label IF_FALSE2
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function HelicopterGame.run 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+push constant 30
+call String.new 1
+push constant 80
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 71
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 87
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label WHILE_EXP0
+push local 1
+push constant 0
+eq
+not
+if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop local 0
+push local 0
+push constant 132
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+pop local 1
+label IF_FALSE0
+goto WHILE_EXP0
+label WHILE_END0
+call Screen.clearScreen 0
+pop temp 0
+label WHILE_EXP1
+push constant 0
+not
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+pop local 0
+push this 6
+push constant 0
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+call HelicopterGame.moveOb 1
+pop temp 0
+label IF_FALSE1
+push local 0
+push constant 131
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 1
+pop this 8
+push pointer 0
+call HelicopterGame.moveSquare 1
+pop temp 0
+label IF_FALSE2
+push local 0
+push constant 133
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 2
+pop this 8
+push pointer 0
+call HelicopterGame.moveSquare 1
+pop temp 0
+label IF_FALSE3
+push local 0
+push constant 130
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 3
+pop this 8
+push pointer 0
+call HelicopterGame.moveSquare 1
+pop temp 0
+label IF_FALSE4
+push local 0
+push constant 132
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 4
+pop this 8
+push pointer 0
+call HelicopterGame.moveSquare 1
+pop temp 0
+label IF_FALSE5
+push pointer 0
+call HelicopterGame.checkCollide 1
+pop temp 0
+push this 9
+push constant 1
+add
+pop this 9
+push this 9
+push constant 150
+eq
+push this 9
+push constant 300
+eq
+or
+push this 9
+push constant 450
+eq
+or
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 6
+push constant 1
+add
+pop this 6
+push pointer 0
+call HelicopterGame.sendObject 1
+pop temp 0
+label IF_FALSE6
+push constant 0
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+return
+function HelicopterGame.moveSquare 0
+push argument 0
+pop pointer 0
+push this 8
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+call Helicopter.moveUp 1
+pop temp 0
+label IF_FALSE0
+push this 8
+push constant 2
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 0
+call Helicopter.moveDown 1
+pop temp 0
+label IF_FALSE1
+push this 8
+push constant 3
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 0
+call Helicopter.moveLeft 1
+pop temp 0
+label IF_FALSE2
+push this 8
+push constant 4
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 0
+call Helicopter.moveRight 1
+pop temp 0
+label IF_FALSE3
+push constant 5
+call Sys.wait 1
+pop temp 0
+push constant 0
+return
+function HelicopterGame.moveOb 0
+push argument 0
+pop pointer 0
+push this 6
+push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+call Obstacle.moveLeft 1
+pop temp 0
+label IF_FALSE0
+push this 6
+push constant 1
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+call Obstacle.moveLeft 1
+pop temp 0
+label IF_FALSE1
+push this 6
+push constant 2
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 3
+call Obstacle.moveLeft 1
+pop temp 0
+label IF_FALSE2
+push constant 5
+call Sys.wait 1
+pop temp 0
+push constant 0
+return
+function HelicopterGame.checkCollide 11
+push argument 0
+pop pointer 0
+push this 0
+call Helicopter.getX 1
+push constant 5
+add
+pop local 9
+push local 9
+push constant 10
+sub
+pop local 10
+push this 0
+call Helicopter.getY 1
+pop local 6
+push local 6
+push constant 30
+sub
+pop local 7
+push local 6
+push constant 30
+add
+pop local 8
+push this 6
+push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+call Obstacle.getY 1
+pop local 1
+push this 1
+call Obstacle.getX 1
+pop local 0
+push local 0
+push local 10
+gt
+push local 0
+push local 9
+lt
+and
+push local 1
+push local 7
+gt
+and
+push local 1
+push local 8
+lt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+call HelicopterGame.endGame 1
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push this 6
+push constant 1
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 2
+call Obstacle.getY 1
+pop local 3
+push this 2
+call Obstacle.getX 1
+pop local 2
+push local 2
+push local 10
+gt
+push local 2
+push local 9
+lt
+and
+push local 3
+push local 7
+gt
+and
+push local 3
+push local 8
+lt
+and
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push pointer 0
+call HelicopterGame.endGame 1
+pop temp 0
+label IF_FALSE3
+label IF_FALSE2
+push this 6
+push constant 2
+gt
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 3
+call Obstacle.getY 1
+pop local 5
+push this 3
+call Obstacle.getX 1
+pop local 4
+push local 4
+push local 10
+gt
+push local 4
+push local 9
+lt
+and
+push local 5
+push local 7
+gt
+and
+push local 5
+push local 8
+lt
+and
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push pointer 0
+call HelicopterGame.endGame 1
+pop temp 0
+label IF_FALSE5
+label IF_FALSE4
+push constant 0
+return
+function HelicopterGame.endGame 1
+push argument 0
+pop pointer 0
+call Output.println 0
+pop temp 0
+push constant 47
+call String.new 1
+push constant 71
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 77
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 86
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 71
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 87
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 76
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 89
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 71
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 78
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 16
+call String.new 1
+push constant 89
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 85
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 67
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push this 9
+call Output.printInt 1
+pop temp 0
+push constant 10
+call Sys.wait 1
+pop temp 0
+label WHILE_EXP0
+push local 0
+push constant 132
+eq
+not
+not
+if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push this 6
+push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+call Obstacle.restart 1
+pop temp 0
+label IF_FALSE0
+push this 6
+push constant 1
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+call Obstacle.restart 1
+pop temp 0
+label IF_FALSE1
+push this 6
+push constant 2
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 1
+call Obstacle.restart 1
+pop temp 0
+label IF_FALSE2
+call Screen.clearScreen 0
+pop temp 0
+push this 0
+call Helicopter.restart 1
+pop temp 0
+push constant 0
+pop this 9
+push constant 0
+return
+function HelicopterGame.sendObject 0
+push argument 0
+pop pointer 0
+push this 6
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 512
+push constant 31
+sub
+push constant 75
+push constant 20
+call Obstacle.new 3
+pop this 1
+label IF_FALSE0
+push this 6
+push constant 2
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 512
+push constant 31
+sub
+push constant 150
+push constant 20
+call Obstacle.new 3
+pop this 2
+label IF_FALSE1
+push this 6
+push constant 3
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 512
+push constant 31
+sub
+push constant 200
+push constant 20
+call Obstacle.new 3
+pop this 3
+label IF_FALSE2
+push constant 0
+return

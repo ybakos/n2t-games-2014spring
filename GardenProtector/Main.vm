@@ -1,0 +1,27 @@
+function Main.main 3
+call SplashScreen.new 0
+pop local 0
+push local 0
+call SplashScreen.run 1
+pop temp 0
+push local 0
+call SplashScreen.dispose 1
+pop temp 0
+call GardenProtector.new 0
+pop local 1
+push local 1
+call GardenProtector.run 1
+pop temp 0
+push local 1
+call GardenProtector.dispose 1
+pop temp 0
+call GameoverScreen.new 0
+pop local 2
+push local 2
+call GameoverScreen.render 1
+pop temp 0
+push local 2
+call GameoverScreen.dispose 1
+pop temp 0
+push constant 0
+return

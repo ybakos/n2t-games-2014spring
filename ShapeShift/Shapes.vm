@@ -1,0 +1,21 @@
+function Shapes.new 0
+push constant 0
+call Memory.alloc 1
+pop pointer 0
+push pointer 0
+return
+function Shapes.empty 0
+push constant 0
+return
+function Shapes.cross 0
+push constant 1
+return
+function Shapes.plus 0
+push constant 2
+return
+function Shapes.square 0
+push constant 3
+return
+function Shapes.diamond 0
+push constant 4
+return

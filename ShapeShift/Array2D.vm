@@ -1,0 +1,208 @@
+function Array2D.new 0
+push constant 6
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 2
+push argument 1
+pop this 3
+push this 2
+call Array.new 1
+pop this 0
+push constant 0
+pop this 4
+push constant 0
+pop this 5
+label WHILE_EXP0
+push this 4
+push this 2
+lt
+not
+if-goto WHILE_END0
+push this 4
+push this 0
+add
+push this 3
+call Array.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 4
+push constant 1
+add
+pop this 4
+goto WHILE_EXP0
+label WHILE_END0
+push pointer 0
+call Array2D.initialize 1
+pop temp 0
+push pointer 0
+return
+function Array2D.initialize 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 4
+push constant 0
+pop this 5
+label WHILE_EXP0
+push this 4
+push this 2
+lt
+not
+if-goto WHILE_END0
+push this 4
+push this 0
+add
+pop pointer 1
+push that 0
+pop this 1
+label WHILE_EXP1
+push this 5
+push this 3
+lt
+not
+if-goto WHILE_END1
+push this 5
+push this 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 5
+push constant 1
+add
+pop this 5
+goto WHILE_EXP1
+label WHILE_END1
+push this 4
+push constant 1
+add
+pop this 4
+push constant 0
+pop this 5
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Array2D.dispose 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 4
+label WHILE_EXP0
+push this 4
+push this 2
+lt
+not
+if-goto WHILE_END0
+push this 4
+push this 0
+add
+pop pointer 1
+push that 0
+pop this 1
+push this 1
+call Array.dispose 1
+pop temp 0
+push this 4
+push constant 1
+add
+pop this 4
+goto WHILE_EXP0
+label WHILE_END0
+push this 0
+call Array.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Array2D.insertValue 0
+push argument 0
+pop pointer 0
+push argument 1
+push this 0
+add
+pop pointer 1
+push that 0
+pop this 1
+push argument 2
+push this 1
+add
+push argument 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function Array2D.getValue 0
+push argument 0
+pop pointer 0
+push argument 1
+push this 0
+add
+pop pointer 1
+push that 0
+pop this 1
+push argument 2
+push this 1
+add
+pop pointer 1
+push that 0
+return
+function Array2D.print 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 4
+push constant 0
+pop this 5
+label WHILE_EXP0
+push this 4
+push this 2
+lt
+not
+if-goto WHILE_END0
+push this 4
+push this 0
+add
+pop pointer 1
+push that 0
+pop this 1
+label WHILE_EXP1
+push this 5
+push this 3
+lt
+not
+if-goto WHILE_END1
+push this 5
+push this 1
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push this 5
+push constant 1
+add
+pop this 5
+goto WHILE_EXP1
+label WHILE_END1
+call Output.println 0
+pop temp 0
+push this 4
+push constant 1
+add
+pop this 4
+push constant 0
+pop this 5
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

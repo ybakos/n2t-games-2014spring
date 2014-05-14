@@ -1,0 +1,839 @@
+function Game.new 0
+push constant 9
+call Memory.alloc 1
+pop pointer 0
+push constant 61
+pop this 1
+push constant 0
+pop this 2
+push constant 3
+pop this 3
+push constant 512
+push this 1
+push constant 3
+add
+call Math.divide 2
+pop this 0
+push this 0
+push this 3
+call Math.multiply 2
+call Array.new 1
+pop this 6
+push constant 100
+push constant 10
+call Bar.new 2
+pop this 7
+push constant 5
+push constant 4
+push this 7
+call Bar.get_height 1
+call Ball.new 3
+pop this 8
+push this 7
+call Bar.get_width 1
+push constant 2
+call Math.divide 2
+pop this 4
+push constant 0
+pop this 5
+push pointer 0
+call Game.make_wall 1
+pop temp 0
+push pointer 0
+return
+function Game.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Game.start_game 6
+push argument 0
+pop pointer 0
+push constant 0
+pop local 5
+push constant 0
+pop local 0
+push constant 1
+neg
+pop local 1
+push constant 3
+pop local 2
+push constant 1
+neg
+pop local 3
+label WHILE_EXP0
+push local 0
+push constant 0
+eq
+not
+if-goto WHILE_END0
+push constant 0
+pop local 5
+push pointer 0
+call Game.handle_keyboard_input 1
+pop local 1
+push local 1
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 7
+call Bar.move_left 1
+pop temp 0
+label IF_FALSE0
+push local 1
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 7
+call Bar.move_right 1
+pop temp 0
+label IF_FALSE1
+push pointer 0
+call Game.handle_ball 1
+pop local 3
+push local 3
+push constant 0
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 8
+call Ball.get_direction 1
+pop local 4
+push local 4
+push constant 180
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 4
+push constant 90
+add
+pop local 4
+label IF_FALSE3
+push local 4
+push constant 180
+lt
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 4
+push constant 90
+sub
+pop local 4
+label IF_FALSE4
+push this 8
+push local 4
+call Ball.set_direction 2
+pop temp 0
+label IF_FALSE2
+push local 3
+push constant 1
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 4
+push constant 180
+gt
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push local 4
+push constant 90
+sub
+pop local 4
+label IF_FALSE6
+push local 4
+push constant 180
+lt
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push local 4
+push constant 90
+add
+pop local 4
+label IF_FALSE7
+push this 8
+push local 4
+call Ball.set_direction 2
+pop temp 0
+label IF_FALSE5
+push local 3
+push constant 2
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push this 8
+call Ball.get_direction 1
+pop local 4
+push local 4
+push constant 90
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push constant 1
+pop local 5
+push this 5
+push constant 1
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 225
+pop local 4
+label IF_FALSE10
+push this 5
+push constant 2
+eq
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push constant 315
+pop local 4
+label IF_FALSE11
+label IF_FALSE9
+push local 4
+push constant 270
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push constant 1
+pop local 5
+push this 5
+push constant 1
+eq
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push constant 135
+pop local 4
+label IF_FALSE13
+push this 5
+push constant 2
+eq
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push constant 45
+pop local 4
+label IF_FALSE14
+label IF_FALSE12
+push local 5
+push constant 0
+eq
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push local 4
+push constant 180
+add
+pop local 4
+push local 4
+push constant 360
+eq
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push local 4
+push constant 360
+sub
+pop local 4
+label IF_FALSE16
+push local 4
+push constant 360
+gt
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push local 4
+push constant 360
+sub
+pop local 4
+label IF_FALSE17
+label IF_FALSE15
+push this 8
+push local 4
+call Ball.set_direction 2
+pop temp 0
+label IF_FALSE8
+push local 3
+push constant 3
+eq
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push local 2
+push constant 1
+sub
+pop local 2
+push local 2
+push constant 0
+eq
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push constant 1
+pop local 0
+label IF_FALSE19
+push local 2
+push constant 0
+gt
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push this 7
+call Bar.erase 1
+pop temp 0
+push this 7
+call Bar.dispose 1
+pop temp 0
+push constant 100
+push constant 10
+call Bar.new 2
+pop this 7
+push this 8
+call Ball.erase 1
+pop temp 0
+push this 8
+call Ball.dispose 1
+pop temp 0
+push constant 5
+push constant 4
+push this 7
+call Bar.get_height 1
+call Ball.new 3
+pop this 8
+label IF_FALSE20
+label IF_FALSE18
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Game.make_wall 4
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+push constant 0
+pop local 2
+push this 0
+pop local 0
+label WHILE_EXP0
+push this 3
+push constant 0
+eq
+not
+not
+if-goto WHILE_END0
+label WHILE_EXP1
+push local 0
+push constant 0
+eq
+not
+not
+if-goto WHILE_END1
+push local 1
+push constant 511
+push this 1
+sub
+gt
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+push local 2
+push this 1
+push constant 5
+call Brick.new 4
+pop local 3
+push this 2
+push this 6
+add
+push local 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push constant 1
+add
+pop this 2
+label IF_FALSE0
+push local 1
+push this 1
+add
+push constant 3
+add
+pop local 1
+push local 0
+push constant 1
+sub
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push local 2
+push constant 11
+add
+pop local 2
+push constant 0
+pop local 1
+push this 0
+pop local 0
+push this 3
+push constant 1
+sub
+pop this 3
+goto WHILE_EXP0
+label WHILE_END0
+push constant 3
+pop this 3
+push constant 0
+return
+function Game.handle_ball 12
+push argument 0
+pop pointer 0
+push this 0
+push this 3
+call Math.multiply 2
+pop local 11
+push this 0
+pop local 6
+push constant 9
+pop local 7
+push constant 0
+pop local 2
+push constant 0
+pop local 5
+push this 8
+call Ball.get_x 1
+pop local 3
+push this 8
+call Ball.get_y 1
+pop local 4
+push this 8
+call Ball.get_direction 1
+pop local 0
+push local 0
+push constant 90
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 4
+push this 8
+call Ball.get_velocity 1
+sub
+pop local 4
+label IF_FALSE0
+push local 0
+push constant 45
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 3
+push this 8
+call Ball.get_velocity 1
+add
+pop local 3
+push local 4
+push this 8
+call Ball.get_velocity 1
+sub
+pop local 4
+label IF_FALSE1
+push local 0
+push constant 0
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 3
+push this 8
+call Ball.get_velocity 1
+add
+pop local 3
+label IF_FALSE2
+push local 0
+push constant 315
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 3
+push this 8
+call Ball.get_velocity 1
+add
+pop local 3
+push local 4
+push this 8
+call Ball.get_velocity 1
+add
+pop local 4
+label IF_FALSE3
+push local 0
+push constant 270
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 4
+push this 8
+call Ball.get_velocity 1
+add
+pop local 4
+label IF_FALSE4
+push local 0
+push constant 225
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 3
+push this 8
+call Ball.get_velocity 1
+sub
+pop local 3
+push local 4
+push this 8
+call Ball.get_velocity 1
+add
+pop local 4
+label IF_FALSE5
+push local 0
+push constant 180
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push local 3
+push this 8
+call Ball.get_velocity 1
+sub
+pop local 3
+label IF_FALSE6
+push local 0
+push constant 135
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push local 3
+push this 8
+call Ball.get_velocity 1
+sub
+pop local 3
+push local 4
+push this 8
+call Ball.get_velocity 1
+sub
+pop local 4
+label IF_FALSE7
+push local 4
+push this 8
+call Ball.get_radius 1
+sub
+push constant 1
+add
+push constant 1
+lt
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push constant 2
+pop local 7
+label IF_FALSE8
+push local 3
+push this 8
+call Ball.get_radius 1
+sub
+push constant 1
+lt
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push constant 0
+pop local 7
+label IF_FALSE9
+push local 3
+push this 8
+call Ball.get_radius 1
+add
+push constant 511
+gt
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 1
+pop local 7
+label IF_FALSE10
+push local 4
+push this 8
+call Ball.get_radius 1
+add
+push constant 255
+gt
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push constant 3
+return
+label IF_FALSE11
+push local 7
+push constant 9
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push this 8
+push local 3
+push local 4
+call Ball.update 3
+pop temp 0
+label IF_FALSE12
+push local 4
+push constant 33
+push this 8
+call Ball.get_radius 1
+add
+lt
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+label WHILE_EXP0
+push local 11
+push constant 0
+eq
+not
+not
+if-goto WHILE_END0
+push local 11
+push constant 1
+sub
+push this 6
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Brick.erased 1
+push constant 1
+eq
+not
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push local 1
+call Brick.get_x 1
+pop local 8
+push local 8
+push local 1
+call Brick.get_width 1
+add
+pop local 9
+push local 1
+call Brick.get_y 1
+pop local 10
+push local 4
+push this 8
+call Ball.get_radius 1
+sub
+push local 10
+push local 1
+call Brick.get_height 1
+add
+lt
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push local 3
+push this 8
+call Ball.get_radius 1
+add
+push local 8
+gt
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push local 3
+push this 8
+call Ball.get_radius 1
+add
+push local 9
+lt
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push local 1
+call Brick.erase 1
+pop temp 0
+push local 3
+push local 8
+push this 4
+add
+gt
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push constant 2
+pop this 5
+label IF_FALSE18
+push local 3
+push local 8
+push this 4
+add
+lt
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push constant 1
+pop this 5
+label IF_FALSE19
+push local 3
+push local 8
+push this 4
+add
+eq
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+push constant 0
+pop this 5
+label IF_FALSE20
+push constant 2
+return
+label IF_FALSE17
+label IF_FALSE16
+label IF_FALSE15
+label IF_FALSE14
+push local 11
+push constant 1
+sub
+pop local 11
+goto WHILE_EXP0
+label WHILE_END0
+label IF_FALSE13
+push local 4
+push this 8
+call Ball.get_radius 1
+add
+push constant 256
+push this 7
+call Bar.get_height 1
+sub
+gt
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+push this 7
+call Bar.get_x 1
+pop local 8
+push local 8
+push this 7
+call Bar.get_width 1
+add
+pop local 9
+push this 7
+call Bar.get_y 1
+pop local 10
+push local 3
+push this 8
+call Ball.get_radius 1
+add
+push local 8
+gt
+if-goto IF_TRUE22
+goto IF_FALSE22
+label IF_TRUE22
+push local 3
+push this 8
+call Ball.get_radius 1
+add
+push local 9
+lt
+if-goto IF_TRUE23
+goto IF_FALSE23
+label IF_TRUE23
+push local 3
+push local 8
+push this 4
+add
+gt
+if-goto IF_TRUE24
+goto IF_FALSE24
+label IF_TRUE24
+push constant 2
+pop this 5
+label IF_FALSE24
+push local 3
+push local 8
+push this 4
+add
+lt
+if-goto IF_TRUE25
+goto IF_FALSE25
+label IF_TRUE25
+push constant 1
+pop this 5
+label IF_FALSE25
+push local 3
+push local 8
+push this 4
+add
+eq
+if-goto IF_TRUE26
+goto IF_FALSE26
+label IF_TRUE26
+push constant 0
+pop this 5
+label IF_FALSE26
+push constant 2
+return
+label IF_FALSE23
+label IF_FALSE22
+label IF_FALSE21
+push local 7
+return
+function Game.handle_keyboard_input 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+push constant 1
+neg
+pop local 0
+call Keyboard.keyPressed 0
+pop local 1
+push local 1
+push constant 130
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop local 0
+label IF_FALSE0
+push local 1
+push constant 132
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+pop local 0
+label IF_FALSE1
+push local 0
+return

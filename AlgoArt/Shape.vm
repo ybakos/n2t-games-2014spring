@@ -1,0 +1,86 @@
+function Shape.new 0
+push constant 5
+call Memory.alloc 1
+pop pointer 0
+call Random.new 0
+pop static 0
+push pointer 0
+call Shape.update 1
+pop temp 0
+push pointer 0
+return
+function Shape.update 2
+push argument 0
+pop pointer 0
+push static 0
+call Random.getRandomCoordX 1
+pop local 0
+push static 0
+call Random.getRandomCoordX 1
+pop local 1
+push local 0
+push local 1
+call Math.min 2
+pop this 1
+push local 0
+push local 1
+call Math.max 2
+pop this 2
+push static 0
+call Random.getRandomCoordY 1
+pop local 0
+push static 0
+call Random.getRandomCoordY 1
+pop local 1
+push local 0
+push local 1
+call Math.min 2
+pop this 3
+push local 0
+push local 1
+call Math.max 2
+pop this 4
+push static 0
+call Random.getRandomType 1
+pop this 0
+push constant 0
+return
+function Shape.draw 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+push this 3
+push this 2
+push this 4
+call Screen.drawRectangle 4
+pop temp 0
+label IF_FALSE0
+push this 0
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 1
+push this 3
+push this 2
+push this 4
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE1
+push constant 0
+return
+function Shape.test 0
+push argument 0
+pop pointer 0
+push this 0
+call Output.printInt 1
+pop temp 0
+push constant 0
+return

@@ -1,0 +1,218 @@
+function Plus.new 0
+push constant 0
+call Memory.alloc 1
+pop pointer 0
+push pointer 0
+return
+function Plus.draw 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push argument 1
+push constant 6
+sub
+push argument 0
+push argument 1
+push constant 6
+add
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 6
+sub
+push argument 1
+push argument 0
+push constant 6
+add
+push argument 1
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Plus.erase 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push argument 1
+push constant 6
+sub
+push argument 0
+push argument 1
+push constant 6
+add
+call Screen.drawLine 4
+pop temp 0
+push argument 0
+push constant 6
+sub
+push argument 1
+push argument 0
+push constant 6
+add
+push argument 1
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Plus.selectionGrid 12
+push constant 5
+pop local 10
+push constant 3
+pop local 0
+push constant 3
+pop local 1
+push argument 0
+push constant 2
+sub
+pop local 2
+push argument 0
+push constant 1
+sub
+pop local 3
+push argument 0
+push constant 2
+add
+pop local 4
+push argument 0
+push constant 1
+add
+pop local 5
+push argument 1
+push constant 2
+sub
+pop local 6
+push argument 1
+push constant 1
+sub
+pop local 7
+push argument 1
+push constant 2
+add
+pop local 8
+push argument 1
+push constant 1
+add
+pop local 9
+push constant 3
+push constant 3
+call Array2D.new 2
+pop local 11
+push local 2
+push constant 1
+neg
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 11
+push local 2
+push argument 1
+call Shapes.cross 0
+call Array2D.insertValue 4
+pop temp 0
+label IF_FALSE0
+push local 3
+push constant 1
+neg
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 11
+push local 3
+push argument 1
+call Shapes.cross 0
+call Array2D.insertValue 4
+pop temp 0
+label IF_FALSE1
+push local 6
+push constant 1
+neg
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 11
+push argument 0
+push local 6
+call Shapes.cross 0
+call Array2D.insertValue 4
+pop temp 0
+label IF_FALSE2
+push local 7
+push constant 1
+neg
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 11
+push argument 0
+push local 7
+call Shapes.cross 0
+call Array2D.insertValue 4
+pop temp 0
+label IF_FALSE3
+push local 8
+push local 1
+lt
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 11
+push argument 0
+push local 8
+call Shapes.cross 0
+call Array2D.insertValue 4
+pop temp 0
+label IF_FALSE4
+push local 9
+push local 1
+lt
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 11
+push argument 0
+push local 9
+call Shapes.cross 0
+call Array2D.insertValue 4
+pop temp 0
+label IF_FALSE5
+push local 4
+push local 0
+lt
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push local 11
+push local 4
+push argument 1
+call Shapes.cross 0
+call Array2D.insertValue 4
+pop temp 0
+label IF_FALSE6
+push local 5
+push local 0
+lt
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push local 11
+push local 5
+push argument 1
+call Shapes.cross 0
+call Array2D.insertValue 4
+pop temp 0
+label IF_FALSE7
+push local 11
+push argument 0
+push argument 1
+call Shapes.cross 0
+call Array2D.insertValue 4
+pop temp 0
+push local 11
+return

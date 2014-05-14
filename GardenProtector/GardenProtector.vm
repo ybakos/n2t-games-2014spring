@@ -1,0 +1,897 @@
+function GardenProtector.new 0
+push constant 12
+call Memory.alloc 1
+pop pointer 0
+push constant 50
+push constant 50
+push constant 15
+call Cursor.new 3
+pop this 0
+push constant 0
+pop this 1
+push constant 0
+pop this 4
+push constant 5
+call Array.new 1
+pop this 2
+push constant 0
+push this 2
+add
+push constant 400
+push constant 130
+push constant 15
+call Rabbit.new 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 2
+add
+push constant 420
+push constant 50
+push constant 15
+call Rabbit.new 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 2
+add
+push constant 480
+push constant 200
+push constant 15
+call Rabbit.new 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 2
+add
+push constant 440
+push constant 170
+push constant 15
+call Rabbit.new 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push this 2
+add
+push constant 430
+push constant 10
+push constant 15
+call Rabbit.new 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+pop this 3
+push constant 9
+call Array.new 1
+pop this 5
+push constant 0
+push this 5
+add
+push constant 218
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push constant 83
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push constant 13
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push constant 191
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push this 5
+add
+push constant 116
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push this 5
+add
+push constant 96
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push this 5
+add
+push constant 112
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push this 5
+add
+push constant 66
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 8
+push this 5
+add
+push constant 162
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+pop this 6
+push constant 0
+not
+pop this 7
+push constant 3
+pop this 10
+push this 10
+call Array.new 1
+pop this 8
+push constant 0
+pop this 9
+call User.new 0
+pop this 11
+push pointer 0
+return
+function GardenProtector.dispose 3
+push argument 0
+pop pointer 0
+label WHILE_EXP0
+push local 0
+push this 9
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 8
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Tower.dispose 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+pop local 0
+label WHILE_EXP1
+push local 0
+push this 3
+lt
+not
+if-goto WHILE_END1
+push local 0
+push this 2
+add
+pop pointer 1
+push that 0
+pop local 2
+push local 2
+call Rabbit.dispose 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push this 0
+call Cursor.dispose 1
+pop temp 0
+push this 11
+call User.dispose 1
+pop temp 0
+call Screen.clearScreen 0
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function GardenProtector.run 7
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+not
+not
+if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop local 0
+push constant 0
+pop this 1
+push local 0
+push constant 81
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+pop local 1
+label IF_FALSE0
+push local 0
+push constant 131
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+pop this 1
+label WHILE_EXP1
+push local 0
+push constant 0
+eq
+not
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call GardenProtector.moveCursor 1
+pop temp 0
+push pointer 0
+call GardenProtector.updateRabbitHorde 1
+pop temp 0
+push pointer 0
+call GardenProtector.renderField 1
+pop temp 0
+goto WHILE_EXP1
+label WHILE_END1
+label IF_FALSE1
+push local 0
+push constant 133
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 2
+pop this 1
+label WHILE_EXP2
+push local 0
+push constant 0
+eq
+not
+not
+if-goto WHILE_END2
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call GardenProtector.moveCursor 1
+pop temp 0
+push pointer 0
+call GardenProtector.updateRabbitHorde 1
+pop temp 0
+push pointer 0
+call GardenProtector.renderField 1
+pop temp 0
+goto WHILE_EXP2
+label WHILE_END2
+label IF_FALSE2
+push local 0
+push constant 130
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 3
+pop this 1
+label WHILE_EXP3
+push local 0
+push constant 0
+eq
+not
+not
+if-goto WHILE_END3
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call GardenProtector.moveCursor 1
+pop temp 0
+push pointer 0
+call GardenProtector.updateRabbitHorde 1
+pop temp 0
+push pointer 0
+call GardenProtector.renderField 1
+pop temp 0
+goto WHILE_EXP3
+label WHILE_END3
+label IF_FALSE3
+push local 0
+push constant 132
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 4
+pop this 1
+label WHILE_EXP4
+push local 0
+push constant 0
+eq
+not
+not
+if-goto WHILE_END4
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call GardenProtector.moveCursor 1
+pop temp 0
+push pointer 0
+call GardenProtector.updateRabbitHorde 1
+pop temp 0
+push pointer 0
+call GardenProtector.renderField 1
+pop temp 0
+goto WHILE_EXP4
+label WHILE_END4
+label IF_FALSE4
+push local 0
+push constant 32
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+pop local 2
+push constant 0
+not
+pop local 3
+label WHILE_EXP5
+push local 2
+push this 9
+lt
+not
+if-goto WHILE_END5
+push local 2
+push this 8
+add
+pop pointer 1
+push that 0
+pop local 4
+push local 4
+push this 0
+call Cursor.getX 1
+push this 0
+call Cursor.getY 1
+call Tower.inRadius 3
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push constant 0
+pop local 3
+label IF_FALSE6
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP5
+label WHILE_END5
+push local 3
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 0
+call Cursor.getX 1
+pop local 5
+push this 0
+call Cursor.getY 1
+pop local 6
+push local 5
+push constant 45
+sub
+push constant 0
+lt
+push local 5
+push constant 45
+sub
+push constant 0
+eq
+or
+push local 6
+push constant 45
+sub
+push constant 0
+lt
+push local 6
+push constant 45
+sub
+push constant 0
+eq
+or
+or
+push local 5
+push constant 45
+add
+push constant 254
+gt
+push local 5
+push constant 45
+add
+push constant 254
+eq
+or
+or
+push local 6
+push constant 45
+add
+push constant 254
+gt
+push local 6
+push constant 45
+add
+push constant 254
+eq
+or
+or
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push constant 0
+pop local 3
+label IF_FALSE8
+label IF_FALSE7
+push this 9
+push this 10
+lt
+push local 3
+and
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push this 9
+push this 8
+add
+push this 0
+call Cursor.getX 1
+push this 0
+call Cursor.getY 1
+call Tower.new 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 9
+push constant 1
+add
+pop this 9
+label IF_FALSE9
+label IF_FALSE5
+push pointer 0
+call GardenProtector.updateRabbitHorde 1
+pop temp 0
+push pointer 0
+call GardenProtector.renderField 1
+pop temp 0
+push this 11
+call User.isDead 1
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 0
+not
+pop local 1
+label IF_FALSE10
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function GardenProtector.moveCursor 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+call Cursor.moveUp 1
+pop temp 0
+label IF_FALSE0
+push this 1
+push constant 2
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 0
+call Cursor.moveDown 1
+pop temp 0
+label IF_FALSE1
+push this 1
+push constant 3
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 0
+call Cursor.moveLeft 1
+pop temp 0
+label IF_FALSE2
+push this 1
+push constant 4
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 0
+call Cursor.moveRight 1
+pop temp 0
+label IF_FALSE3
+push constant 10
+call Sys.wait 1
+pop temp 0
+push constant 0
+return
+function GardenProtector.moveRabbit 1
+push argument 0
+pop pointer 0
+push argument 1
+call Rabbit.moveLeft 1
+pop local 0
+push local 0
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push argument 1
+call GardenProtector.killRabbit 2
+pop temp 0
+push this 11
+call User.decHealth 1
+pop temp 0
+label IF_FALSE0
+push constant 10
+call Sys.wait 1
+pop temp 0
+push constant 0
+return
+function GardenProtector.killRabbit 0
+push argument 0
+pop pointer 0
+push this 7
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 4
+push this 6
+push this 5
+add
+pop pointer 1
+push that 0
+add
+pop this 4
+push constant 220
+push this 4
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 4
+push constant 220
+sub
+pop this 4
+label IF_FALSE1
+push this 6
+push constant 1
+add
+pop this 6
+push this 6
+push constant 8
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+pop this 6
+label IF_FALSE2
+push constant 0
+pop this 7
+goto IF_END0
+label IF_FALSE0
+push this 4
+push this 6
+push this 5
+add
+pop pointer 1
+push that 0
+sub
+pop this 4
+push this 4
+push constant 10
+lt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 4
+push constant 220
+add
+pop this 4
+label IF_FALSE3
+push this 6
+push constant 1
+add
+pop this 6
+push this 6
+push constant 8
+gt
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 0
+pop this 6
+label IF_FALSE4
+push constant 0
+not
+pop this 7
+label IF_END0
+push argument 1
+call Rabbit.dispose 1
+pop temp 0
+push constant 480
+push this 4
+push constant 15
+call Rabbit.new 3
+pop argument 1
+push constant 0
+return
+function GardenProtector.updateRabbitHorde 4
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+push this 3
+lt
+not
+if-goto WHILE_END0
+push local 1
+push this 2
+add
+pop pointer 1
+push that 0
+pop local 3
+push pointer 0
+push local 3
+call GardenProtector.moveRabbit 2
+pop temp 0
+push constant 0
+pop local 0
+label WHILE_EXP1
+push local 0
+push this 9
+lt
+not
+if-goto WHILE_END1
+push local 0
+push this 8
+add
+pop pointer 1
+push that 0
+pop local 2
+push local 2
+push local 3
+call Rabbit.getXCenter 1
+push local 3
+call Rabbit.getYCenter 1
+call Tower.inRadius 3
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 3
+call Rabbit.decHealth 1
+pop temp 0
+push local 3
+call Rabbit.isDead 1
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+push local 3
+call GardenProtector.killRabbit 2
+pop temp 0
+push this 11
+call User.incScore 1
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function GardenProtector.renderField 5
+push argument 0
+pop pointer 0
+call Screen.clearScreen 0
+pop temp 0
+push constant 0
+push constant 35
+call Output.moveCursor 2
+pop temp 0
+push constant 8
+call String.new 1
+push constant 72
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+pop local 4
+push local 4
+call Output.printString 1
+pop temp 0
+push local 4
+call String.dispose 1
+pop temp 0
+push this 11
+call User.health 1
+call Output.printInt 1
+pop temp 0
+push constant 16
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 39
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+pop local 4
+push local 4
+call Output.printString 1
+pop temp 0
+push local 4
+call String.dispose 1
+pop temp 0
+push this 11
+call User.score 1
+call Output.printInt 1
+pop temp 0
+push constant 0
+pop local 2
+label WHILE_EXP0
+push local 2
+push this 9
+lt
+not
+if-goto WHILE_END0
+push local 2
+push this 8
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Tower.draw 1
+pop temp 0
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+pop local 3
+label WHILE_EXP1
+push local 3
+push this 3
+lt
+not
+if-goto WHILE_END1
+push local 3
+push this 2
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Rabbit.draw 1
+pop temp 0
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP1
+label WHILE_END1
+push this 0
+call Cursor.draw 1
+pop temp 0
+push constant 254
+push constant 0
+push constant 254
+push constant 254
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+push constant 0
+push constant 254
+push constant 0
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return

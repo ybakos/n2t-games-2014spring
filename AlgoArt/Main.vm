@@ -1,0 +1,120 @@
+function Main.main 7
+push constant 3
+pop static 1
+push static 1
+call Array.new 1
+pop static 0
+push constant 0
+pop local 6
+label WHILE_EXP0
+push local 6
+push static 1
+lt
+not
+if-goto WHILE_END0
+push local 6
+push static 0
+add
+push constant 2
+push constant 2
+push local 6
+call Math.multiply 2
+call Shape.new 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 6
+push constant 1
+add
+pop local 6
+goto WHILE_EXP0
+label WHILE_END0
+call Main.update 0
+pop temp 0
+call Main.draw 0
+pop temp 0
+label WHILE_EXP1
+push local 5
+push constant 0
+eq
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+push constant 32
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+call Screen.clearScreen 0
+pop temp 0
+call Main.update 0
+pop temp 0
+call Main.draw 0
+pop temp 0
+label IF_FALSE0
+call Keyboard.keyPressed 0
+push constant 140
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+pop local 5
+label IF_FALSE1
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+return
+function Main.update 2
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push static 1
+lt
+not
+if-goto WHILE_END0
+push local 0
+push static 0
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Shape.update 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Main.draw 2
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push static 1
+lt
+not
+if-goto WHILE_END0
+push local 0
+push static 0
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Shape.draw 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
